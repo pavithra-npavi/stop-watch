@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Stop watch</title>
+        <style type="text/css">
+        .watch{
+            margin-left: 500px;
+            
+        }
+        .box div{
+            float: left;
+        }
+        p{
+            width: 100px;
+        }
+        </style>
+    </head>
+    <body>
+
+        <button type="button" id="start">Start Timer</button>
+        <button type="button" id="stop">Stop Watch </button>
+        <button type="button" id="reset">Reset Watch</button>
+    
+
+         <div class="watch">
+            <div class="box">
+                <div class="hours">
+                    <p id="hours"> 0 : </p>        
+                </div>
+                <div class="minutes">
+                    <p id="minutes"> 0 :</p>
+                </div>
+                <div class="seconds">
+                    <p id="seconds"> 0 </p>
+                </div>
+                <div class="miliSecond">
+                    <p id="miliSecond"> 0 </p>
+                </div>
+            </div>
+            </div>
+
+        <script>
+            var startBtn = document.getElementById("start")
+            var stopBtn = document.getElementById("stop")
+            var resetBtn = document.getElementById("reset")
+            
+                var msec = document.getElementById("miliSecond")
+                var seconds = document.getElementById("seconds")
+                var minutes = document.getElementById("minutes")
+                var hours = document.getElementById("hours")
+            var timer;
+            
+         var hours=0
+         var minutes=0
+         var seconds=0
+         var msec=0
+         var timer=null;
+        function start(start_time){
+             timer= setInterval(function() {
+                msec++;
+                if(msec==100) {
+                    seconds++;
+                    msec=0;
+                }
+                if(seconds==60) {
+                    minutes++;
+                    seconds=0;
+                }
+                if(minutes==60) {
+                    hours++;
+                    minutes=0;
+                }
+                document.getElementById("msec").innerHTML=msec;
+           document.getElementById("seconds").innerHTML=seconds;
+           document.getElementById("minutes").innerHTML=minutes;
+           document.getElementById("hours").innerHTML=hours;
+             },10)
+        }
+
+        function stopTimer(){
+            clearInterval(timer);
+        }
+
+        function resetTImer(){
+         var hours=0
+         var minutes=0
+         var seconds=0
+         var msec=0
+           document.getElementById("msec").innerHTML=msec;
+           document.getElementById("seconds").innerHTML=seconds;
+           document.getElementById("minutes").innerHTML=minutes;
+           document.getElementById("hours").innerHTML=hours;
+        }
+
+            startBtn.addEventListener('click',start_time)     
+            stopBtn.addEventListener('click', stopTimer)
+            resetBtn.addEventListener('click', resetTImer)
+
+        </script>
+    </body>
+</html>
